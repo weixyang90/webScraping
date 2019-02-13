@@ -18,7 +18,7 @@ shinyServer(function(input, output) {
                    summarise(., number = length(Record)) %>%
                    distinct() %>% 
                    arrange (., desc(number)) %>%
-                   head(12), aes(x= Record, y= number, fill = Record)) +
+                   head(15), aes(x= Record, y= number, fill = Record)) +
       geom_bar(stat="identity", alpha=0.5, width = 0.5, position='dodge') +
       geom_text(aes(x=Record,
                     y=number,

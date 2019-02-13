@@ -29,4 +29,8 @@ states <- geojson_read("./data/gz_2010_us_040_00_500k.json",what = "sp")
 stateData.df <- merge(states, stateFull.df, by.x = "NAME", by.y = "Name")
 nrow(data)
 
+
+data %>%
+  select(numOfReview) %>%
+  arrange (., desc(numOfReview))
      

@@ -5,8 +5,8 @@ account: weixyang90
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 706175
-bundleId: 1873112
+bundleId: 1873188
 url: https://weixyang90.shinyapps.io/vrbo_shiny/
-when: 1550027031.7876
+when: 1550031519.29796
 asMultiple: FALSE
 asStatic: FALSE
