@@ -7,9 +7,9 @@ shinyUI(
                      image = "h1.jpg"),
     sidebarMenu(
       menuItem("Home", tabName = "Home", icon = icon("home")),
-      menuItem("graph", tabName = "graph", icon = icon("sliders-h")),
-      menuItem("scatter", tabName = "scatter", icon = icon("sliders-h")),
-      menuItem("map", tabName = "map", icon = icon("map"))
+      menuItem("Bar Graph", tabName = "BarGraph", icon = icon("chart-bar")),
+      menuItem("Scatter Graph", tabName = "ScatterGraph", icon = icon("chart-line")),
+      menuItem("Map", tabName = "Map", icon = icon("map"))
     ),
     selectizeInput("selected",
                    "Select data to Display",
@@ -30,14 +30,14 @@ shinyUI(
                     type, price, location(state), number of people sleep in the place, number of bedrooms in the place
                     , number of bathrooms in the place, number of reviews, and reviews.",width=12)),
               fluidRow(box(img(src = "vacation.jpg", style="width:1470px;height:981px;"), width=12))),
-      tabItem(tabName = "graph",
+      tabItem(tabName = "BarGraph",
               fluidRow(infoBoxOutput("totalBox"),
                        infoBoxOutput("PopularBox"),
                        infoBoxOutput("PopularHouseBox")),
               fluidRow(box(width = 12,plotOutput("graph")))),
-      tabItem(tabName = "scatter",
+      tabItem(tabName = "ScatterGraph",
               fluidRow(box(width = 12,plotOutput("scatter")))),
-      tabItem(tabName = 'map',
+      tabItem(tabName = 'Map',
               h3('Number of choices in different state', align = "center"),
               fluidRow(
                       column(
