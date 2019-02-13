@@ -8,6 +8,7 @@ shinyUI(
     sidebarMenu(
       menuItem("Home", tabName = "Home", icon = icon("home")),
       menuItem("graph", tabName = "graph", icon = icon("sliders-h")),
+      menuItem("scatter", tabName = "scatter", icon = icon("sliders-h")),
       menuItem("map", tabName = "map", icon = icon("map"))
     ),
     selectizeInput("selected",
@@ -34,6 +35,8 @@ shinyUI(
                        infoBoxOutput("PopularBox"),
                        infoBoxOutput("PopularHouseBox")),
               fluidRow(box(width = 12,plotOutput("graph")))),
+      tabItem(tabName = "scatter",
+              fluidRow(box(width = 12,plotOutput("scatter")))),
       tabItem(tabName = 'map',
               h3('Number of choices in different state', align = "center"),
               fluidRow(

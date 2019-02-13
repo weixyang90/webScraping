@@ -12,7 +12,6 @@
 shinyServer(function(input, output) {
   
   output$graph = renderPlot(
-
       ggplot(data %>%
                    select(., Record = as.character(input$selected))%>%
                    group_by(., Record) %>%
@@ -41,6 +40,31 @@ shinyServer(function(input, output) {
       labs(fill=as.character(input$selected),x=as.character(input$selected), y=paste("number in choice of ", as.character(input$selected)), title = paste("Top ranking number in ", as.character(input$selected)))
   )
   
+  output$scatter = renderPlot(
+    ggplot(dataN %>%
+             select(., Record = as.character(input$selected), price) %>% 
+              distinct() %>% 
+              arrange (., desc(Record)), 
+           aes(x = Record, y = price)) +
+      geom_point(aes(color = Record)) +
+      stat_smooth(method = "glm",
+                  col = "#ff8c66",
+                  se = FALSE,
+                  size = 1)+
+      theme_minimal() +
+      theme(
+        text = element_text(size=15), 
+        plot.title = element_text(hjust = 0.5),
+        axis.text.x =
+          element_text(size  = 12,
+                       angle = 45,
+                       hjust = 1,
+                       vjust = 1)
+      )+
+      labs(color=as.character(input$selected),x=as.character(input$selected), y="price", 
+           title = paste(as.character(input$selected), "compare to price"))
+  )
+  
  # output$map = renderGvis({
   #  gvisGeoChart(
   #    data %>%
@@ -67,11 +91,12 @@ shinyServer(function(input, output) {
                   popup = paste0("<strong>State: </strong>", 
                                  stateData.df$NAME,
                                  "<br><strong>Number of : </strong>",
-                                 stateData.df$count),
+                                 stateData.df$count,
+                                 "<br><strong>Ratio of all data : </strong>",
+                                 paste0(stateData.df$count/nrow(data)*100, "%")),
                   color = "#BDBDC3",
                   fillOpacity = 0.8,
                   weight = 1)
-    
   })
   
   
